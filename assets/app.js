@@ -219,6 +219,8 @@
     const raw = (location.hash || '#/').slice(1);
     const parts = raw.split('/').filter(Boolean).map(decodeURIComponent);
     if (!parts.length) return { name: 'home' };
+    if (parts[0] === 'braindrops' && !parts[1]) return { name: 'braindrops' };
+    if (parts[0] === 'braindrops' && parts[1]) return { name: 'braindrops-game', levelCode: parts[1].toUpperCase() };
     if (parts[0] === 'level' && parts[1]) return { name: 'level', levelCode: parts[1].toUpperCase() };
     if (parts[0] === 'practice' && parts[1] && parts[2]) return { name: 'practice', levelCode: parts[1].toUpperCase(), setNumber: Number(parts[2]) };
     if (parts[0] === 'result' && parts[1] && parts[2]) return { name: 'result', levelCode: parts[1].toUpperCase(), setNumber: Number(parts[2]) };
@@ -388,6 +390,7 @@
         <div class="stat-card"><span class="stat-value">${totalSets}</span><span class="stat-label">Practice sets · ชุด</span></div>
         <div class="stat-card"><span class="stat-value">${stats.completed}</span><span class="stat-label">Completed · ทำแล้ว</span></div>
       </section>
+      ${window.InfiniaBraindrops ? window.InfiniaBraindrops.renderHomeCard() : ''}
       <div class="track-tabs" role="tablist" aria-label="Practice strand">
         <button type="button" data-track="addition-subtraction" class="${track === 'addition-subtraction' ? 'active' : ''}" role="tab" aria-selected="${track === 'addition-subtraction'}">
           + − Addition & Subtraction<small>การบวกและการลบ</small>
@@ -412,6 +415,8 @@
       </section>
     `;
 
+    const braindropsHome = view.querySelector('[data-braindrops-home]');
+    if (braindropsHome) braindropsHome.addEventListener('click', () => navigate('#/braindrops'));
     view.querySelectorAll('[data-track]').forEach(btn => btn.addEventListener('click', () => {
       setTrack(btn.dataset.track);
       renderHome();
@@ -724,9 +729,17 @@
     if (!data) return;
     renderToken += 1;
     stopTimer({ persist: true });
+    if (window.InfiniaBraindrops) window.InfiniaBraindrops.destroy();
     const r = parseRoute();
     if (r.name === 'home') renderHome();
-    else {
+    else if (r.name === 'braindrops') {
+      if (window.InfiniaBraindrops) window.InfiniaBraindrops.renderLanding(view, data, { navigate });
+      else renderHome();
+    } else if (r.name === 'braindrops-game') {
+      const level = getLevel(r.levelCode);
+      if (!level || !window.InfiniaBraindrops) return renderHome();
+      window.InfiniaBraindrops.renderGame(view, level, { navigate });
+    } else {
       const level = getLevel(r.levelCode);
       if (!level) return renderHome();
       if (r.name === 'level') renderLevel(level);

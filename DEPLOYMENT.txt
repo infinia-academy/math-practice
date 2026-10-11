@@ -4,4 +4,8 @@ Pages: main branch, / (root)
 Intended URL: https://infinia-academy.github.io/math-practice/
 
 The app is a static project site and uses relative asset/data paths plus hash routes.
+Braindrops routes are #/braindrops and #/braindrops/<LEVEL>.
 Do not replace or delete an existing .git directory during future ZIP updates.
+
+After publishing v2, a cache-busting check URL can be used if needed:
+https://infinia-academy.github.io/math-practice/?v=2

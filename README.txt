@@ -5,12 +5,29 @@ Static GitHub Pages web app built from the Infinia Academy Math Fluency
 worksheet bundle in this project: A1-A13 and M1-M9.
 
 CONTENTS
-- index.html                 App entry point
-- assets/styles.css          Mobile-first styling
-- assets/app.js              Client-side practice, scoring, timer and storage
-- data/math-practice.json    Canonical web practice data (150 sets / 3,412 questions)
-- data/content-manifest.json Level/set summary
-- downloads/                 Printable student and level PDFs + teacher answer key
+- index.html                    App entry point
+- assets/styles.css             Existing mobile-first practice styling
+- assets/app.js                 Existing practice, scoring, timer and storage
+- assets/braindrops.css         Braindrops game layout and visual design
+- assets/braindrops.js          Braindrops game engine and level integration
+- assets/neural-brain-bg.svg    Original neural-network / brain background art
+- data/math-practice.json       Canonical web practice data (150 sets / 3,412 questions)
+- data/content-manifest.json    Level/set summary
+- downloads/                    Printable student and level PDFs + teacher answer key
+
+BRAINDROPS (เกมสมองแตก)
+- The normal practice mode remains intact; Braindrops is a separate game route.
+- Students choose any existing A1-A13 or M1-M9 level.
+- Falling brains use questions only from that selected level's existing source bank.
+- Entering one answer clears every visible brain with the same answer.
+- Each cleared brain is worth 500 base points; clearing multiple matching brains gives
+  an additional combo bonus, and consecutive correct submissions build a multiplier.
+- A brain reaching the neural floor costs one of three lives. Three misses end the round.
+- A miss slightly eases the remaining falling speed; correct play gradually raises the challenge.
+- Repeated rapid guessing temporarily locks the keypad.
+- Pause/resume, transparent touch keypad, clear-X button, keyboard input, local best scores,
+  replay, level change, and return-to-normal-practice actions are included.
+- Switching away from the browser automatically pauses an active round.
 
 DEPLOYMENT
 The site uses only relative project paths and hash routes, so it is compatible
@@ -20,16 +37,17 @@ https://infinia-academy.github.io/math-practice/
 No backend and no build step are required.
 
 KATEX
-Math is rendered using KaTeX loaded from the official jsDelivr CDN. If KaTeX
-cannot load, the app displays a readable text fallback rather than breaking.
+Normal Math Practice equations are rendered using KaTeX loaded from the official
+jsDelivr CDN. If KaTeX cannot load, the app displays a readable text fallback.
+Braindrops uses crisp stacked/inline arithmetic typography optimized for moving objects.
 
 TIMER / DEVICE STORAGE
-- Each practice set has an elapsed-time timer.
-- Active session state, answers and timer are stored in localStorage.
-- Timer elapsed time and current question are also mirrored to a small
+- Each normal practice set has an elapsed-time timer.
+- Active practice session state, answers and timer are stored in localStorage.
+- Practice timer elapsed time and current question are also mirrored to a small
   first-party cookie (infinia_math_timer_v1) as a restoration fallback.
-- The timer is stopped and saved when leaving a practice screen, then resumes
-  when the same set is opened again.
+- Braindrops high scores and recent-level state are stored locally under
+  infinia.math.braindrops.v1.
 - Progress is local to the student's browser/device. No student data is sent
   to a server by this app.
 

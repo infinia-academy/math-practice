@@ -1,46 +1,48 @@
-INFINIA MATH PRACTICE — QA REPORT
-=================================
+INFINIA MATH PRACTICE + BRAINDROPS — QA REPORT
+==============================================
 Build date: 2026-10-11
-Content version: 2026.10.11-v1
+Web bundle: v2
+Math content version: 2026.10.11-v1 (unchanged from v1 site)
 
 CONTENT INTEGRITY
-PASS — 22 levels (A1-A13, M1-M9)
-PASS — 150 practice sets
-PASS — 3,412 questions
-PASS — titles, bilingual concept notes, tips, generated questions and answers match the worksheet source generator used for the PDF bundle
-PASS — all 22 level PDFs, full student workbook and teacher answer key are present
-PASS — all LaTeX expressions use the supported command subset used by the source content
+PASS — existing 22 levels (A1-A13, M1-M9) retained
+PASS — existing 150 practice sets / 3,412 questions retained
+PASS — Braindrops question pools are built from the selected level's existing questions only
+PASS — no October calendar content introduced
+PASS — printable student/level PDFs and teacher answer key retained
 
 STATIC-SITE / GITHUB PAGES
-PASS — no root-absolute local asset paths
-PASS — index, CSS, JS, JSON and PDFs use project-relative paths
-PASS — hash routing is used so route refreshes do not require server rewrites
 PASS — no backend and no service worker
-PASS — /math-practice/ project-path files were served and retrieved successfully in local HTTP path checks
+PASS — hash routes: #/braindrops and #/braindrops/<LEVEL>
+PASS — local assets use project-relative paths suitable for /math-practice/
+PASS — HTTP path checks returned 200 for index.html, app.js, braindrops.js,
+       styles.css, braindrops.css, neural-brain-bg.svg and math-practice.json
+PASS — node syntax checks passed for app.js and braindrops.js
+PASS — production JSON parses successfully
 
 BROWSER QA
 Browser: Chromium headless
-Mobile viewport: 390 x 844
-PASS — home screen and addition/subtraction level navigation
-PASS — multiplication track switching
-PASS — level and set navigation
-PASS — math-render integration path
-PASS — immediate wrong/correct feedback
-PASS — elapsed timer
-PASS — active session persistence
-PASS — timer mirrored to first-party cookie
-PASS — cookie-only timer restoration fallback
-PASS — simulated full refresh restoration
-PASS — result scoring and retry-incorrect control
-PASS — result-screen refresh
-PASS — Thai-only language switch
-PASS — zero application console errors / zero page errors in the test run
+Primary mobile viewport: 390 x 844
+PASS — existing normal practice screen still renders and routes correctly
+PASS — Braindrops home-screen entry card
+PASS — Braindrops landing screen and A1-A13 / M1-M9 level switching
+PASS — ready/start state
+PASS — falling-brain animation and neural background
+PASS — transparent numeric keypad, clear-X, Enter and keyboard control paths
+PASS — pause/resume overlay
+PASS — three-life display and miss handling
+PASS — correct answer clears matching brain and increases score
+PASS — deterministic two-brain same-answer test cleared both brains in one submission
+       and awarded the expected multi-pop score increase (1,250 points at base streak)
+PASS — rapid-wrong-answer lockout code path present and interaction-safe
+PASS — three misses produce the round-complete result screen
+PASS — result actions: play again / normal practice / change level
+PASS — M9 long derived-fact prompts render as a compact multi-line expression
+PASS — rerouting the same hash recreates the ready game screen rather than breaking
+PASS — zero application console errors / zero page errors in the interaction runs
 
 ENVIRONMENT NOTE
-The execution sandbox blocks Chromium from navigating to localhost/HTTP URLs directly.
-The browser interaction test therefore loaded the exact production HTML/CSS/JS/data into
-Chromium as static content and exercised the same client-side logic, while separate local
-HTTP checks verified /math-practice/ path resolution and data retrieval. The production
-HTML uses the official KaTeX CDN; the sandbox browser test used a KaTeX-compatible render
-shim to exercise the app's rendering integration because external browser networking is
-blocked in this environment.
+The execution sandbox blocks Chromium navigation to localhost/file URLs. Browser interaction
+QA therefore loaded the exact production HTML/CSS/JS/data into Chromium using an in-memory
+static document, while separate local HTTP checks verified the real /math-practice/ project
+path and asset/data retrieval. This avoids claiming an unperformed live-browser HTTP test.

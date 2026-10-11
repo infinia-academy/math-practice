@@ -1,0 +1,117 @@
+/* Braindrops — additive arcade fluency mode. The normal practice UI is intentionally untouched. */
+.braindrops-home-card {
+  position: relative; display: grid; grid-template-columns: 76px 1fr auto; align-items: center; gap: 12px;
+  width: 100%; margin: 18px 0 4px; padding: 14px; overflow: hidden; border: 0; border-radius: 20px;
+  background: linear-gradient(135deg,#0c5674 0%,#087f91 48%,#12a6aa 100%); color: #fff; text-align: left;
+  box-shadow: 0 12px 28px rgba(11,91,113,.2); cursor: pointer;
+}
+.braindrops-home-card::after { content:""; position:absolute; inset:0; background:url('./neural-brain-bg.svg') center/cover; opacity:.42; pointer-events:none; }
+.braindrops-home-art,.braindrops-home-copy,.braindrops-home-cta { position:relative; z-index:1; }
+.braindrops-home-art { display:grid; place-items:center; width:68px; height:68px; border-radius:18px; background:rgba(255,255,255,.1); backdrop-filter:blur(7px); }
+.braindrops-home-copy { min-width:0; display:grid; gap:2px; }
+.braindrops-home-kicker { color:#bffbff; font-size:9px; font-weight:900; letter-spacing:.12em; }
+.braindrops-home-copy strong { font-size:20px; line-height:1.15; }
+.braindrops-home-copy > span:not(.braindrops-home-kicker) { color:rgba(239,254,255,.86); font-size:11px; line-height:1.35; }
+.braindrops-home-cta { align-self:end; padding:8px 10px; border:1px solid rgba(255,255,255,.28); border-radius:999px; background:rgba(3,39,57,.25); font-size:10px; font-weight:900; }
+.brain-svg { width:100%; height:100%; overflow:visible; }
+.brain-body { fill:#143f5b; stroke:#ebfeff; stroke-width:4; stroke-linejoin:round; }
+.brain-mid,.brain-fold { fill:none; stroke:#75dfe8; stroke-width:2.2; stroke-linecap:round; opacity:.78; }
+.home-brain { width:58px; height:58px; filter:drop-shadow(0 4px 8px rgba(1,25,38,.2)); }
+
+.bd-landing { max-width:860px; margin:0 auto; }
+.bd-th-title { font-size:.68em; color:var(--muted); font-weight:800; }
+.bd-intro-card { position:relative; display:grid; grid-template-columns:100px 1fr; gap:14px; padding:16px; overflow:hidden; border-radius:20px; color:#eaffff; background:linear-gradient(145deg,#0e526e,#0d8797); box-shadow:var(--shadow); }
+.bd-intro-card::after { content:""; position:absolute; inset:0; background:url('./neural-brain-bg.svg') center/cover; opacity:.35; }
+.bd-intro-card > * { position:relative; z-index:1; }
+.bd-intro-art { display:grid; place-items:center; min-height:100px; }
+.intro-brain { width:92px; filter:drop-shadow(0 8px 16px rgba(0,0,0,.18)); }
+.bd-intro-card h2 { margin:2px 0 4px; font-size:24px; }
+.bd-intro-card p { margin:4px 0; color:rgba(239,254,255,.9); font-size:13px; line-height:1.5; }
+.bd-rule-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:9px; }
+.bd-rule-chips span { padding:5px 8px; border:1px solid rgba(255,255,255,.24); border-radius:999px; background:rgba(2,37,52,.22); font-size:10px; font-weight:800; }
+.bd-rules { margin-top:10px; padding:13px 15px; border:1px solid #c9e7e9; border-radius:15px; background:#f3fbfb; }
+.bd-rules strong { color:#0e6070; font-size:13px; }
+.bd-rules ol { margin:8px 0 0; padding-left:21px; color:#526a70; font-size:12px; line-height:1.55; }
+.bd-level-tabs { display:grid; grid-template-columns:1fr 1fr; gap:6px; padding:5px; border-radius:15px; background:#e5eff1; }
+.bd-level-tabs button { min-height:44px; border:0; border-radius:11px; background:transparent; color:var(--muted); font-weight:900; cursor:pointer; }
+.bd-level-tabs button.active { background:#fff; color:#0d687b; box-shadow:0 2px 8px rgba(34,67,78,.08); }
+.bd-level-grid { display:grid; grid-template-columns:1fr; gap:8px; margin-top:10px; }
+.bd-level-card { display:grid; grid-template-columns:52px 1fr auto; align-items:center; gap:10px; width:100%; min-height:75px; padding:10px 12px; border:1px solid var(--line); border-radius:15px; background:#fff; text-align:left; cursor:pointer; }
+.bd-level-card:hover,.bd-level-card:focus-visible { outline:none; border-color:#7bc5ce; box-shadow:0 6px 18px rgba(20,91,106,.08); }
+.bd-level-card.recommended { border-color:#8bd4d8; background:linear-gradient(100deg,#fff,#f0fbfb); }
+.bd-level-code { display:grid; place-items:center; width:48px; height:48px; border-radius:14px; background:#dff5f6; color:#0b6d7e; font-size:17px; font-weight:950; }
+.bd-level-name strong { display:block; font-size:13px; }.bd-level-name small { display:block; margin-top:3px; color:var(--muted); font-size:11px; line-height:1.3; }
+.bd-level-best { color:#5a747b; font-size:9px; font-weight:800; text-align:right; line-height:1.2; }.bd-level-best strong { color:#0d7282; font-size:13px; }
+
+body.braindrops-active { overflow:hidden; background:#063f5c; }
+body.braindrops-active .site-header,body.braindrops-active .site-footer { display:none; }
+body.braindrops-active main { height:100dvh; min-height:100dvh; }
+body.braindrops-active #view { width:100%; max-width:none; height:100dvh; padding:0; }
+.bd-game { --bd-control-h: 306px; position:relative; width:100%; height:100dvh; min-height:620px; overflow:hidden; color:#effeff; background:linear-gradient(180deg,#087e92 0%,#087486 42%,#07586f 74%,#073e59 100%); isolation:isolate; }
+.bd-game::before { content:""; position:absolute; inset:0; z-index:-3; background:url('./neural-brain-bg.svg') center/cover no-repeat; opacity:.9; }
+.bd-game::after { content:""; position:absolute; inset:0; z-index:-2; background:radial-gradient(circle at 50% 36%,rgba(95,244,246,.18),transparent 35%),linear-gradient(180deg,rgba(20,203,200,.18),rgba(0,20,40,.18)); }
+.bd-neural-glow { position:absolute; left:-15%; right:-15%; bottom:calc(var(--bd-control-h) - 8px); height:95px; border-radius:50% 50% 0 0; background:radial-gradient(ellipse at center,rgba(85,244,246,.24),rgba(5,43,64,.8) 72%); border-top:2px solid rgba(129,250,248,.3); box-shadow:0 -14px 45px rgba(68,229,236,.13); }
+.bd-hud { position:absolute; z-index:20; top:max(12px,env(safe-area-inset-top)); left:12px; right:12px; display:grid; grid-template-columns:52px 1fr auto; align-items:center; gap:8px; pointer-events:none; }
+.bd-hud > * { pointer-events:auto; }
+.bd-hud-btn { width:48px; height:48px; border:1px solid rgba(216,253,255,.15); border-radius:10px; background:rgba(4,55,74,.42); color:#56e0f5; font-size:25px; font-weight:900; cursor:pointer; backdrop-filter:blur(7px); }
+.bd-hud-center { justify-self:center; display:grid; text-align:center; text-shadow:0 2px 8px rgba(0,0,0,.2); }
+.bd-hud-center span { font-size:12px; font-weight:950; letter-spacing:.12em; }.bd-hud-center small { max-width:150px; overflow:hidden; color:rgba(231,253,255,.68); font-size:9px; text-overflow:ellipsis; white-space:nowrap; }
+.bd-score { display:flex; align-items:center; gap:14px; min-height:48px; padding:0 14px; border:1px solid rgba(220,255,255,.18); border-radius:5px; background:rgba(220,255,255,.62); color:#103f52; box-shadow:0 4px 18px rgba(0,0,0,.06); backdrop-filter:blur(6px); }
+.bd-score span { font-size:11px; font-weight:900; letter-spacing:.08em; }.bd-score strong { min-width:46px; font-size:15px; text-align:right; font-variant-numeric:tabular-nums; }
+.bd-lives { position:absolute; z-index:20; top:calc(max(12px,env(safe-area-inset-top)) + 57px); left:50%; transform:translateX(-50%); display:flex; gap:4px; padding:3px 7px; border-radius:999px; background:rgba(3,55,72,.22); backdrop-filter:blur(5px); }
+.bd-life { width:20px; height:18px; opacity:.18; filter:grayscale(1); }.bd-life.alive { opacity:.9; filter:none; }.life-brain .brain-body { stroke-width:6; }.life-brain .brain-fold,.life-brain .brain-mid { display:none; }
+.bd-stage { position:absolute; z-index:4; top:104px; left:0; right:0; bottom:var(--bd-control-h); overflow:hidden; }
+.brain-drop { position:absolute; top:0; left:0; will-change:transform; transform-origin:center; filter:drop-shadow(0 8px 8px rgba(0,28,43,.18)); }
+.brain-drop .brain-svg { position:absolute; inset:0; }.brain-drop .brain-body { fill:rgba(18,57,82,.96); stroke:#f0ffff; stroke-width:4.5; }.brain-drop .brain-mid,.brain-drop .brain-fold { stroke:#61d5e2; opacity:.65; }
+.brain-expression { position:absolute; z-index:2; inset:14% 14% 13%; display:grid; place-items:center; color:#fff; text-align:center; text-shadow:0 2px 2px rgba(0,0,0,.18); pointer-events:none; }
+.brain-stacked { display:grid; grid-template-rows:1fr 1fr; align-items:center; font-size:clamp(23px,7vw,36px); line-height:.96; font-weight:650; font-family:"STIX Two Math","Cambria Math","Times New Roman",serif; }
+.brain-stacked > span:last-child { position:relative; min-width:1.9em; padding-left:.42em; border-bottom:2px solid rgba(255,255,255,.75); }
+.brain-stacked b { position:absolute; left:0; bottom:.05em; font-weight:500; }
+.brain-inline { max-width:100%; font-family:"STIX Two Math","Cambria Math","Times New Roman",serif; font-size:clamp(18px,5.3vw,27px); font-weight:650; line-height:1.08; overflow-wrap:anywhere; }
+.brain-drop.wide .brain-inline { font-size:clamp(11px,3.15vw,17px); }
+.brain-drop.wide .brain-expression { inset:23% 9% 16%; }
+.brain-multiline { display:grid; gap:1px; max-width:100%; font-family:"STIX Two Math","Cambria Math","Times New Roman",serif; font-size:clamp(12px,3.6vw,17px); font-weight:650; line-height:1.04; white-space:nowrap; }
+.brain-drop.popped { animation:bd-pop .23s ease-out forwards; }.brain-drop.missed { animation:bd-miss .22s ease-in forwards; }
+@keyframes bd-pop { 45% { transform:scale(1.18); filter:brightness(1.6) drop-shadow(0 0 16px #9effff); opacity:1; } 100% { transform:scale(.35); opacity:0; } }
+@keyframes bd-miss { to { opacity:0; filter:blur(4px); } }
+.bd-toast { position:absolute; z-index:24; left:50%; bottom:calc(var(--bd-control-h) + 16px); transform:translate(-50%,8px); min-width:140px; max-width:80%; padding:7px 12px; border-radius:999px; background:rgba(7,44,62,.7); color:#e9ffff; font-size:11px; font-weight:900; text-align:center; opacity:0; transition:.16s ease; pointer-events:none; backdrop-filter:blur(7px); }
+.bd-toast.show { opacity:1; transform:translate(-50%,0); }.bd-toast.good { color:#aefcf3; }.bd-toast.bad { color:#ffe0c7; }
+.bd-controls { position:absolute; z-index:15; left:0; right:0; bottom:0; height:var(--bd-control-h); padding:8px max(13px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(13px,env(safe-area-inset-left)); background:linear-gradient(180deg,rgba(7,48,65,.05),rgba(4,34,51,.88) 92%); transition:opacity .15s; }
+.bd-controls.locked { opacity:.48; pointer-events:none; }
+.bd-answer-display { position:relative; display:grid; place-items:center; height:57px; max-width:570px; margin:0 auto 7px; border:1px solid rgba(211,255,255,.13); background:rgba(224,255,255,.58); color:#0a4f66; backdrop-filter:blur(8px); font-size:28px; font-weight:900; font-variant-numeric:tabular-nums; }
+.bd-answer-display button { position:absolute; right:13px; top:50%; width:37px; height:37px; transform:translateY(-50%); border:3px solid rgba(24,93,112,.55); border-radius:50%; background:transparent; color:rgba(24,93,112,.7); font-size:24px; font-weight:800; line-height:1; cursor:pointer; }
+.bd-keypad { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; max-width:570px; height:227px; margin:0 auto; }
+.bd-keypad button { min-height:49px; border:1px solid rgba(135,245,248,.08); background:rgba(3,62,78,.66); color:#40d7f2; font-size:25px; font-weight:650; cursor:pointer; backdrop-filter:blur(4px); }
+.bd-keypad button:active { background:rgba(23,120,132,.85); transform:scale(.985); }.bd-keypad .bd-enter { grid-column:span 2; font-size:20px; font-weight:850; letter-spacing:.02em; }
+.shake { animation:bd-shake .22s linear; }@keyframes bd-shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+.bd-overlay { position:absolute; z-index:40; inset:0; display:grid; place-items:center; padding:20px; background:rgba(2,37,55,.66); backdrop-filter:blur(8px); }.bd-overlay.hidden { display:none; }
+.bd-overlay-card { width:min(360px,92vw); padding:22px 18px; border:1px solid rgba(213,255,255,.2); border-radius:24px; background:linear-gradient(155deg,rgba(9,75,95,.95),rgba(5,44,65,.96)); color:#f1ffff; box-shadow:0 24px 70px rgba(0,15,27,.35); text-align:center; }
+.bd-overlay-card h1 { margin:8px 0 4px; font-size:32px; }.bd-overlay-card p { margin:4px 0; color:rgba(232,253,255,.72); font-size:13px; }
+.bd-ready-brain { width:100px; height:88px; margin:0 auto 4px; }.ready-brain { filter:drop-shadow(0 8px 20px rgba(63,235,242,.18)); }
+.bd-main-btn,.bd-secondary-btn,.bd-text-btn { width:100%; min-height:48px; margin-top:10px; border-radius:13px; font-weight:900; cursor:pointer; }.bd-main-btn { border:0; background:#42d7dd; color:#073c51; }.bd-secondary-btn { border:1px solid rgba(183,250,252,.25); background:rgba(14,93,109,.65); color:#eaffff; }.bd-text-btn { border:0; background:transparent; color:#96eaf0; }
+.bd-final-score { margin:10px 0 14px; color:#66eff2; font-size:44px; font-weight:950; font-variant-numeric:tabular-nums; letter-spacing:-.04em; }
+.bd-result-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }.bd-result-grid div { padding:10px 5px; border-radius:12px; background:rgba(202,253,255,.08); }.bd-result-grid strong { display:block; color:#eaffff; font-size:19px; }.bd-result-grid span { display:block; margin-top:2px; color:#9edbe0; font-size:9px; line-height:1.3; }
+.bd-best-line { margin-top:12px !important; }.bd-best-line strong { color:#f5ffff; }
+
+@media (max-height: 690px) {
+  .bd-game { --bd-control-h: 260px; }
+  .bd-answer-display { height:48px; margin-bottom:5px; font-size:24px; }
+  .bd-keypad { height:200px; gap:3px; }.bd-keypad button { min-height:41px; font-size:21px; }
+  .bd-stage { top:92px; }.bd-hud-btn,.bd-score { min-height:42px;height:42px; }.bd-hud-btn { width:42px; }
+}
+@media (min-width:560px) {
+  .bd-level-grid { grid-template-columns:repeat(2,1fr); }
+  .bd-game { --bd-control-h: 306px; }
+}
+@media (min-width:900px) {
+  .bd-level-grid { grid-template-columns:repeat(3,1fr); }
+  .bd-game { max-width:720px; margin:0 auto; box-shadow:0 0 70px rgba(0,30,43,.35); }
+}
+@media (max-width:430px) {
+  .braindrops-home-card { grid-template-columns:65px 1fr; }.braindrops-home-cta { display:none; }.braindrops-home-art { width:60px;height:60px; }.home-brain{width:52px;}
+  .bd-intro-card { grid-template-columns:76px 1fr; }.intro-brain{width:72px;}
+  .bd-score { gap:8px; padding:0 10px; }.bd-score span{font-size:9px;}.bd-score strong{font-size:13px;min-width:40px;}
+}
+@media (prefers-reduced-motion: reduce) {
+  .brain-drop.popped,.brain-drop.missed,.shake { animation-duration:.01ms !important; }
+}
