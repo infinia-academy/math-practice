@@ -1,0 +1,178 @@
+[
+  {
+    "code": "A1",
+    "strand": "addition-subtraction",
+    "title_en": "Add or subtract 1",
+    "title_th": "บวกหนึ่งหรือลบหนึ่ง",
+    "sets": 5,
+    "questions_per_set": 30
+  },
+  {
+    "code": "A2",
+    "strand": "addition-subtraction",
+    "title_en": "Add or subtract 2",
+    "title_th": "บวกสองหรือลบสอง",
+    "sets": 5,
+    "questions_per_set": 30
+  },
+  {
+    "code": "A3",
+    "strand": "addition-subtraction",
+    "title_en": "Number bonds to 10",
+    "title_th": "คู่จำนวนที่รวมกันได้สิบ",
+    "sets": 5,
+    "questions_per_set": 24
+  },
+  {
+    "code": "A4",
+    "strand": "addition-subtraction",
+    "title_en": "Addition facts within 10",
+    "title_th": "การบวกที่ผลรวมไม่เกินสิบ",
+    "sets": 6,
+    "questions_per_set": 24
+  },
+  {
+    "code": "A5",
+    "strand": "addition-subtraction",
+    "title_en": "Subtraction facts within 10",
+    "title_th": "การลบภายในสิบ",
+    "sets": 6,
+    "questions_per_set": 24
+  },
+  {
+    "code": "A6",
+    "strand": "addition-subtraction",
+    "title_en": "Make 10 to add",
+    "title_th": "ทำให้ครบสิบก่อนบวก",
+    "sets": 6,
+    "questions_per_set": 18
+  },
+  {
+    "code": "A7",
+    "strand": "addition-subtraction",
+    "title_en": "Addition crossing 10",
+    "title_th": "การบวกข้ามสิบ",
+    "sets": 8,
+    "questions_per_set": 20
+  },
+  {
+    "code": "A8",
+    "strand": "addition-subtraction",
+    "title_en": "Subtraction crossing 10",
+    "title_th": "การลบข้ามสิบ",
+    "sets": 8,
+    "questions_per_set": 20
+  },
+  {
+    "code": "A9",
+    "strand": "addition-subtraction",
+    "title_en": "Teen number plus one digit",
+    "title_th": "จำนวนสิบเอ็ดถึงสิบเก้าบวกหนึ่งหลัก",
+    "sets": 6,
+    "questions_per_set": 20
+  },
+  {
+    "code": "A10",
+    "strand": "addition-subtraction",
+    "title_en": "Teen number minus one digit",
+    "title_th": "จำนวนสิบเอ็ดถึงยี่สิบลบหนึ่งหลัก",
+    "sets": 6,
+    "questions_per_set": 20
+  },
+  {
+    "code": "A11",
+    "strand": "addition-subtraction",
+    "title_en": "Add two numbers up to 20",
+    "title_th": "บวกจำนวนสองจำนวนที่ไม่เกินยี่สิบ",
+    "sets": 10,
+    "questions_per_set": 18
+  },
+  {
+    "code": "A12",
+    "strand": "addition-subtraction",
+    "title_en": "Subtract numbers up to 20",
+    "title_th": "ลบจำนวนที่ไม่เกินยี่สิบ",
+    "sets": 8,
+    "questions_per_set": 18
+  },
+  {
+    "code": "A13",
+    "strand": "addition-subtraction",
+    "title_en": "Mixed addition and subtraction",
+    "title_th": "การบวกและลบแบบผสม",
+    "sets": 10,
+    "questions_per_set": 20
+  },
+  {
+    "code": "M1",
+    "strand": "multiplication",
+    "title_en": "Times tables: 1, 2, 5 and 10",
+    "title_th": "สูตรคูณแม่หนึ่ง สอง ห้า และสิบ",
+    "sets": 6,
+    "questions_per_set": 30
+  },
+  {
+    "code": "M2",
+    "strand": "multiplication",
+    "title_en": "Times tables: 3 and 4",
+    "title_th": "สูตรคูณแม่สามและสี่",
+    "sets": 6,
+    "questions_per_set": 24
+  },
+  {
+    "code": "M3",
+    "strand": "multiplication",
+    "title_en": "Times table: 6",
+    "title_th": "สูตรคูณแม่หก",
+    "sets": 5,
+    "questions_per_set": 24
+  },
+  {
+    "code": "M4",
+    "strand": "multiplication",
+    "title_en": "Times table: 9",
+    "title_th": "สูตรคูณแม่เก้า",
+    "sets": 5,
+    "questions_per_set": 24
+  },
+  {
+    "code": "M5",
+    "strand": "multiplication",
+    "title_en": "Times tables: 7 and 8",
+    "title_th": "สูตรคูณแม่เจ็ดและแปด",
+    "sets": 8,
+    "questions_per_set": 24
+  },
+  {
+    "code": "M6",
+    "strand": "multiplication",
+    "title_en": "Times tables: 11 and 12",
+    "title_th": "สูตรคูณแม่สิบเอ็ดและสิบสอง",
+    "sets": 5,
+    "questions_per_set": 24
+  },
+  {
+    "code": "M7",
+    "strand": "multiplication",
+    "title_en": "Mixed facts from 1×1 to 12×12",
+    "title_th": "สูตรคูณคละหนึ่งถึงสิบสอง",
+    "sets": 10,
+    "questions_per_set": 30
+  },
+  {
+    "code": "M8",
+    "strand": "multiplication",
+    "title_en": "Inverse multiplication and division facts",
+    "title_th": "ความสัมพันธ์ย้อนกลับของการคูณและการหาร",
+    "sets": 8,
+    "questions_per_set": 24
+  },
+  {
+    "code": "M9",
+    "strand": "multiplication",
+    "title_en": "Derive harder facts from known facts",
+    "title_th": "สร้างคำตอบจากสูตรคูณที่รู้แล้ว",
+    "sets": 8,
+    "questions_per_set": 18
+  }
+]

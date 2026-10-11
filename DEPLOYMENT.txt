@@ -1,0 +1,7 @@
+Repository: infinia-academy/math-practice
+SSH remote: git@github-infinia:infinia-academy/math-practice.git
+Pages: main branch, / (root)
+Intended URL: https://infinia-academy.github.io/math-practice/
+
+The app is a static project site and uses relative asset/data paths plus hash routes.
+Do not replace or delete an existing .git directory during future ZIP updates.

@@ -1,0 +1,46 @@
+INFINIA MATH PRACTICE — QA REPORT
+=================================
+Build date: 2026-10-11
+Content version: 2026.10.11-v1
+
+CONTENT INTEGRITY
+PASS — 22 levels (A1-A13, M1-M9)
+PASS — 150 practice sets
+PASS — 3,412 questions
+PASS — titles, bilingual concept notes, tips, generated questions and answers match the worksheet source generator used for the PDF bundle
+PASS — all 22 level PDFs, full student workbook and teacher answer key are present
+PASS — all LaTeX expressions use the supported command subset used by the source content
+
+STATIC-SITE / GITHUB PAGES
+PASS — no root-absolute local asset paths
+PASS — index, CSS, JS, JSON and PDFs use project-relative paths
+PASS — hash routing is used so route refreshes do not require server rewrites
+PASS — no backend and no service worker
+PASS — /math-practice/ project-path files were served and retrieved successfully in local HTTP path checks
+
+BROWSER QA
+Browser: Chromium headless
+Mobile viewport: 390 x 844
+PASS — home screen and addition/subtraction level navigation
+PASS — multiplication track switching
+PASS — level and set navigation
+PASS — math-render integration path
+PASS — immediate wrong/correct feedback
+PASS — elapsed timer
+PASS — active session persistence
+PASS — timer mirrored to first-party cookie
+PASS — cookie-only timer restoration fallback
+PASS — simulated full refresh restoration
+PASS — result scoring and retry-incorrect control
+PASS — result-screen refresh
+PASS — Thai-only language switch
+PASS — zero application console errors / zero page errors in the test run
+
+ENVIRONMENT NOTE
+The execution sandbox blocks Chromium from navigating to localhost/HTTP URLs directly.
+The browser interaction test therefore loaded the exact production HTML/CSS/JS/data into
+Chromium as static content and exercised the same client-side logic, while separate local
+HTTP checks verified /math-practice/ path resolution and data retrieval. The production
+HTML uses the official KaTeX CDN; the sandbox browser test used a KaTeX-compatible render
+shim to exercise the app's rendering integration because external browser networking is
+blocked in this environment.
