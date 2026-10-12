@@ -55,3 +55,13 @@ CACHE
 No service worker is included, so there is no application cache version to bump
 when publishing normal updates. GitHub Pages/browser HTTP caching can be bypassed
 for testing with a URL such as ?v=2.
+
+V3 ADAPTIVE BRAINDROPS
+- Adaptive Addition/Subtraction and Multiplication modes added while Focus Practice remains available.
+- Rolling memory keeps the latest 10 completed games per strand; game 11 replaces the oldest.
+- New rounds use a 30% weakness-review / 70% fluency-and-progress curation model.
+- Easier unresolved levels receive extra review weight before higher-level progression.
+- First-ever adaptive play starts at A1/M1 and rises after fluent correct streaks; repeated misses ease the frontier and game pressure.
+- Large deterministic question pools are generated from the A1-A13/M1-M9 curriculum rules and cached in localStorage (cookie stores pool version metadata only).
+- Each falling brain is labelled with its A/M level code.
+- Long expressions are forced to remain on one line per expression segment with smaller responsive type; derived-fact equations use deliberate multi-line segments.

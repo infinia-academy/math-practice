@@ -220,7 +220,8 @@
     const parts = raw.split('/').filter(Boolean).map(decodeURIComponent);
     if (!parts.length) return { name: 'home' };
     if (parts[0] === 'braindrops' && !parts[1]) return { name: 'braindrops' };
-    if (parts[0] === 'braindrops' && parts[1]) return { name: 'braindrops-game', levelCode: parts[1].toUpperCase() };
+    if (parts[0] === 'braindrops' && parts[1] === 'adaptive' && parts[2]) return { name: 'braindrops-adaptive', strand: parts[2] };
+    if (parts[0] === 'braindrops' && parts[1]) return { name: 'braindrops-game', levelCode: parts[1].split('?')[0].toUpperCase() };
     if (parts[0] === 'level' && parts[1]) return { name: 'level', levelCode: parts[1].toUpperCase() };
     if (parts[0] === 'practice' && parts[1] && parts[2]) return { name: 'practice', levelCode: parts[1].toUpperCase(), setNumber: Number(parts[2]) };
     if (parts[0] === 'result' && parts[1] && parts[2]) return { name: 'result', levelCode: parts[1].toUpperCase(), setNumber: Number(parts[2]) };
@@ -735,6 +736,9 @@
     else if (r.name === 'braindrops') {
       if (window.InfiniaBraindrops) window.InfiniaBraindrops.renderLanding(view, data, { navigate });
       else renderHome();
+    } else if (r.name === 'braindrops-adaptive') {
+      if (!window.InfiniaBraindrops || !['addition-subtraction','multiplication'].includes(r.strand)) return renderHome();
+      window.InfiniaBraindrops.renderAdaptiveGame(view, r.strand, data, { navigate });
     } else if (r.name === 'braindrops-game') {
       const level = getLevel(r.levelCode);
       if (!level || !window.InfiniaBraindrops) return renderHome();

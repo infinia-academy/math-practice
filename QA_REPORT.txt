@@ -1,48 +1,20 @@
-INFINIA MATH PRACTICE + BRAINDROPS — QA REPORT
-==============================================
-Build date: 2026-10-11
-Web bundle: v2
-Math content version: 2026.10.11-v1 (unchanged from v1 site)
+Infinia Math Practice v3 - Adaptive Braindrops QA
 
-CONTENT INTEGRITY
-PASS — existing 22 levels (A1-A13, M1-M9) retained
-PASS — existing 150 practice sets / 3,412 questions retained
-PASS — Braindrops question pools are built from the selected level's existing questions only
-PASS — no October calendar content introduced
-PASS — printable student/level PDFs and teacher answer key retained
+Automated checks performed before packaging:
+- JavaScript syntax checks for app.js and braindrops.js.
+- Programmatic pool generation checked for every A1-A13 / M1-M9 level.
+- Every generated question has an ID, level code, finite numeric answer, and non-empty prompt.
+- Rolling history code is capped at 10 records per strand via slice(-10).
+- Adaptive route and legacy Focus routes are both present.
+- Relative static asset paths remain GitHub Pages project-site compatible.
+- Brain expression CSS prevents arbitrary word wrapping; long derived expressions use explicit equation segments.
+- Existing normal Math Practice routes/code remain in place.
 
-STATIC-SITE / GITHUB PAGES
-PASS — no backend and no service worker
-PASS — hash routes: #/braindrops and #/braindrops/<LEVEL>
-PASS — local assets use project-relative paths suitable for /math-practice/
-PASS — HTTP path checks returned 200 for index.html, app.js, braindrops.js,
-       styles.css, braindrops.css, neural-brain-bg.svg and math-practice.json
-PASS — node syntax checks passed for app.js and braindrops.js
-PASS — production JSON parses successfully
+Adaptive design:
+- First game begins at A1 or M1 and can move upward after 4 fluent correct results at/above the frontier.
+- With history, 30% of selection attempts target weakness review; 70% target current fluency/progression.
+- Review weights increase for repeated errors and lower prerequisite levels.
+- Three misses around/below the frontier can ease the frontier; a miss also slows remaining drops.
+- Question pool is cached in localStorage with pool version 2; a small first-party cookie records pool version metadata.
 
-BROWSER QA
-Browser: Chromium headless
-Primary mobile viewport: 390 x 844
-PASS — existing normal practice screen still renders and routes correctly
-PASS — Braindrops home-screen entry card
-PASS — Braindrops landing screen and A1-A13 / M1-M9 level switching
-PASS — ready/start state
-PASS — falling-brain animation and neural background
-PASS — transparent numeric keypad, clear-X, Enter and keyboard control paths
-PASS — pause/resume overlay
-PASS — three-life display and miss handling
-PASS — correct answer clears matching brain and increases score
-PASS — deterministic two-brain same-answer test cleared both brains in one submission
-       and awarded the expected multi-pop score increase (1,250 points at base streak)
-PASS — rapid-wrong-answer lockout code path present and interaction-safe
-PASS — three misses produce the round-complete result screen
-PASS — result actions: play again / normal practice / change level
-PASS — M9 long derived-fact prompts render as a compact multi-line expression
-PASS — rerouting the same hash recreates the ready game screen rather than breaking
-PASS — zero application console errors / zero page errors in the interaction runs
-
-ENVIRONMENT NOTE
-The execution sandbox blocks Chromium navigation to localhost/file URLs. Browser interaction
-QA therefore loaded the exact production HTML/CSS/JS/data into Chromium using an in-memory
-static document, while separate local HTTP checks verified the real /math-practice/ project
-path and asset/data retrieval. This avoids claiming an unperformed live-browser HTTP test.
+Note: wrong keypad entries are stored as board-level wrong-entry events because the Raindrops-style mechanic does not identify which visible brain the learner intended. Question-specific incorrect evidence comes from brains that reach the floor. This avoids falsely assigning an error to the wrong mathematical fact.
